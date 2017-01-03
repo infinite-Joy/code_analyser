@@ -10,36 +10,16 @@ class AnalyseCode(object):
 
         this is for ref and will be deleted later
         take the conventions from the google code conventions"""
-    def __init__(self, code):
+    def __init__(self, code: str, _tree: str = ""):
         super(AnalyseCode, self).__init__()
         self.code = code
-        self.tree = ast.parse(code)
-        self.tree = ast.dump(self.tree)
+        self._tree = ast.parse(code)
+        self._tree = ast.dump(self._tree)
+
+    @property
+    def tree(self) -> "str":
+        return self._tree
 
     def has_list_append(self) -> bool:
-        if self.tree.find("Call"):
-            return "append" in self.tree
-
-
-# import pprint
-
-# original_code='''
-# my_list=['raindrops n roses', 'whiskers on kittens']
-# my_list.append('bright copper kettles')
-# '''
-
-# print(original_code)
-
-# import ast
-
-# tree = ast.parse(original_code)
-
-# pp = pprint.PrettyPrinter(indent=4)
-
-# des = ast.dump(tree)
-
-# pp.pprint(des)
-
-# print(des.find("Call"))
-
-# print(des.find("append"))
+        if self._tree.find("Call"):
+            return "append" in self._tree

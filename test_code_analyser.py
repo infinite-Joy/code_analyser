@@ -14,3 +14,9 @@ def test_has_list_append_ifnotthere():
 my_list=['raindrops n roses', 'whiskers on kittens']'''
     ac = AnalyseCode(code)
     assert ac.has_list_append() == False
+
+
+def test_check_properties():
+    code = "a"
+    ac = AnalyseCode(code)
+    assert ac.tree == "Module(body=[Expr(value=Name(id='a', ctx=Load()))])"
