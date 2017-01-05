@@ -19,4 +19,5 @@ my_list=['raindrops n roses', 'whiskers on kittens']'''
 def test_check_properties():
     code = "a"
     ac = AnalyseCode(code)
-    assert ac.tree == "Module(body=[Expr(value=Name(id='a', ctx=Load()))])"
+    expected = "Module(body=[Expr(value=Name(id='a', ctx=Load()))])"
+    assert ac.tree == expected
