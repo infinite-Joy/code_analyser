@@ -17,14 +17,14 @@ class AnalyseCode(object):
 code_analyser.py:17: error: Incompatible types in assignment (expression has type "str", variable has type "AST")
 code_analyser.py: note: In member "tree" of class "AnalyseCode":
 code_analyser.py:21: error: Incompatible return value type (got "AST", expected "str")"""
-    def __init__(self, code: str, _tree: str = "") -> None:
+    def __init__(self, code: str, _tree: "ast.AST" = "") -> None:
         super(AnalyseCode, self).__init__()
         self.code = code
         self._tree = ast.parse(code)
         self._tree = ast.dump(self._tree)
 
     @property
-    def tree(self) -> "str":
+    def tree(self) -> "ast.AST":
         return self._tree
 
     def has_list_append(self) -> bool:
